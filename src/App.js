@@ -1,20 +1,19 @@
 import React from "react";
-import "./App.scss";
-import BookDetailComponent from "./pages/book-details/book-details.component";
-import HeaderComponent from "./pages/header/header.component";
+import "./App.css";
+import { Provider } from "react-redux";
+import { createStore } from "redux";
+import rootReducer from "./reducers";
+import AddTodo from "./pages/AddTodo/container";
+import TodoList from "./pages/TodoList/container";
+
+const store = createStore(rootReducer);
 
 function App() {
   return (
-    <div className="App">
-      <div>
-        <HeaderComponent></HeaderComponent>
-      </div>
-      <div className="card-body">
-        <div className="table-responsive">
-          <BookDetailComponent></BookDetailComponent>
-        </div>
-      </div>
-    </div>
+    <Provider store={store}>
+      <AddTodo />
+      <TodoList />
+    </Provider>
   );
 }
 
